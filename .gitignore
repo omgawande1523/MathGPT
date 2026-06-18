@@ -1,0 +1,40 @@
+# Git Ignore Patterns for MathGPT Enterprise
+
+# Virtual environments and dependencies
+backend/.venv/
+.venv/
+venv/
+ENV/
+requirements-dev.txt
+
+# Python cache and byte-code
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local databases and logs
+*.db
+*.sqlite
+*.log
+backend/mathgpt_dev.db
+
+# Environmental configurations and credentials
+.env
+.env.*
+!.env.example
+
+# Frontend build directories and node packages
+frontend/node_modules/
+node_modules/
+frontend/dist/
+dist/
+.eslintcache
+.parcel-cache
+
+# OS generated files
+.DS_Store
+Thumbs.db
