@@ -1,5 +1,5 @@
 # MathGPT Enterprise
-### Neuro-Symbolic Mathematical Research Assistant
+### Neuro-Symbolic Mathematical Research Assistant.
 
 MathGPT Enterprise is an advanced, production-grade enterprise platform that combines Generative AI, Formal Theorem Proving (Lean4), Symbolic Mathematics (SymPy), Automated Reasoning (LangGraph agents), and Research Paper Intelligence (ArXiv).
 
