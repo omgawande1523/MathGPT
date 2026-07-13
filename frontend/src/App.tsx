@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {
   useMathStore,
-  Theorem
+  Theorem,
+  API_BASE_URL
 } from './store/useMathStore';
 import { TheoremExplorer } from './components/TheoremExplorer';
 import { SolverWorkspace } from './components/SolverWorkspace';
@@ -67,7 +68,7 @@ export const App: React.FC = () => {
     setChatLoading(true);
     setChatResponse(null);
     try {
-      const res = await fetch('http://localhost:8000/api/v1/reasoning/pipeline', {
+      const res = await fetch(`${API_BASE_URL}/reasoning/pipeline`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -388,7 +389,7 @@ export const App: React.FC = () => {
               conjectures={store.conjectures}
               activeProjectId={store.activeProject?.id || 1}
               onGenerate={async (exp, dom) => {
-                await fetch('http://localhost:8000/api/v1/conjectures/generate', {
+                await fetch(`${API_BASE_URL}/conjectures/generate`, {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({

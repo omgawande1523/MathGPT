@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactFlow, { MiniMap, Controls, Background, Node, Edge } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { Search, Plus, Network, HelpCircle } from 'lucide-react';
-import { Theorem } from '../store/useMathStore';
+import { Theorem, API_BASE_URL } from '../store/useMathStore';
 
 interface TheoremExplorerProps {
   theorems: Theorem[];
@@ -41,7 +41,7 @@ export const TheoremExplorer: React.FC<TheoremExplorerProps> = ({
 
   const fetchGraph = async (theoremId: string) => {
     try {
-      const res = await fetch(`http://localhost:8000/api/v1/theorems/graph?theorem_id=${theoremId}`);
+      const res = await fetch(`${API_BASE_URL}/theorems/graph?theorem_id=${theoremId}`);
       if (res.ok) {
         const data = await res.json();
         

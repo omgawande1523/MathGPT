@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Editor from '@monaco-editor/react';
 import { Play, CheckCircle, AlertTriangle, Cpu } from 'lucide-react';
-import { Theorem } from '../store/useMathStore';
+import { Theorem, API_BASE_URL } from '../store/useMathStore';
 
 interface LeanStudioProps {
   selectedTheorem: Theorem | null;
@@ -34,7 +34,7 @@ export const LeanStudio: React.FC<LeanStudioProps> = ({ selectedTheorem, onProof
     setLog('Submitting proof to background compiler worker queue...');
     
     try {
-      const res = await fetch('http://localhost:8000/api/v1/proofs/submit', {
+      const res = await fetch(`${API_BASE_URL}/proofs/submit`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -65,7 +65,7 @@ export const LeanStudio: React.FC<LeanStudioProps> = ({ selectedTheorem, onProof
     const interval = setInterval(async () => {
       attempts++;
       try {
-        const res = await fetch(`http://localhost:8000/api/v1/proofs/${proofId}`);
+        const res = await fetch(`${API_BASE_URL}/proofs/${proofId}`);
         if (res.ok) {
           const data = await res.json();
           if (data.verification_status !== 'verifying') {

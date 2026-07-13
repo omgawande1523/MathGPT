@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import katex from 'katex';
 import { Sigma, Binary, Play } from 'lucide-react';
+import { API_BASE_URL } from '../store/useMathStore';
 
 export const SolverWorkspace: React.FC = () => {
   const [expression, setExpression] = useState<string>('x**2 + 3*x - sin(x)');
@@ -34,7 +35,7 @@ export const SolverWorkspace: React.FC = () => {
     setLatexResult('');
 
     try {
-      const res = await fetch('http://localhost:8000/api/v1/solver', {
+      const res = await fetch(`${API_BASE_URL}/solver`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

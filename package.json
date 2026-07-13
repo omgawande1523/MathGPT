@@ -1,0 +1,10 @@
+{
+  "name": "mathgpt-root",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "build": "npm run build -w frontend"
+  }
+}
