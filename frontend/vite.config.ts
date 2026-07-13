@@ -7,10 +7,18 @@ export default defineConfig({
   server: {
     host: true,
     port: 5173,
-    proxy: {
-      '/api': {
-        target: 'http://backend:8000',
-        changeOrigin: true,
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'monaco': ['@monaco-editor/react'],
+          'charts': ['recharts'],
+          'flow': ['reactflow'],
+        }
       }
     }
   }
